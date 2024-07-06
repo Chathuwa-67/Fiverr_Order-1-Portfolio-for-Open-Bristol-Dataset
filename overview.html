@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Cycle shops Portfolio</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="../css/style.css" />
+  </head>
+  <body>
+    <!-- partial:index.partial.html -->
+    <main>
+      <aside>
+        <img src="../img/logo.png" alt="Bristol Bike Shops" class="nav-image" />
+        <ul class="nav flex-column">
+          <li class="nav-item">
+            <a class="nav-link" href="../index.html">
+              <i class="fa-solid fa-bicycle"></i>
+              <span>Home</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="table.html">
+              <i class="fa fa-solid fa-table"></i>
+              <span>Table</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="mapMain.html">
+              <i class="fa-solid fa-map-marker"></i>
+              <span>Map</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="overview.html">
+              <i class="fa-solid fa-file-text"></i>
+              <span>Overview</span>
+            </a>
+          </li>
+        </ul>
+      </aside>
+
+      <!-- Welcome Section -->
+      <div class="swiper mySwiper">
+        <div class="SlideContainer swiper-wrapper">
+          <!-- Conclusion Section -->
+          <div class="swiper-slide">
+            <div>
+              <h1 class="heading">Overview</h1>
+
+              <header class="container mt-">
+                <div class="jumbotron">
+                  <h1 class="display-4">Bristol Bike Shops</h1>
+                  <p class="lead">
+                    The Bristol Bike Shops Directory is your resource for
+                    finding bike-related services in Bristol. Our directory
+                    features a wide range of shops, each offering unique
+                    services to meet all your cycling needs.
+                  </p>
+                  <p>
+                    This data is collected from the
+                    <a href="https://opendata.bristol.gov.uk" target="_blank"
+                      >Bristol Open Data website</a
+                    >.
+                  </p>
+                </div>
+              </header>
+
+              <section class="container text-white ml-5">
+                <h2>How to Use This Directory</h2>
+                <ol>
+                  <li>
+                    Explore the Map: Use our interactive map to see the
+                    locations of all bike shops in Bristol. Click on the markers
+                    to view more details about each shop.
+                  </li>
+                  <li>
+                    Browse the Table: Check the table below the map for a
+                    detailed list of shops. You can search in the table based on
+                    different criteria to find exactly what you need.
+                  </li>
+                  <li>
+                    Visit and Contact: Click on the website links or call the
+                    phone numbers to get in touch with the shops directly for
+                    more information or to avail of their services.
+                  </li>
+                </ol>
+              </section>
+              <footer>
+                <li>© 2024 Bristol Open Data Project</li>
+              </footer>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- partial -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  </body>
+</html>
