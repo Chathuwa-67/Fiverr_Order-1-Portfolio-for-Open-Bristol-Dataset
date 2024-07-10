@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cycle Shops and Repairs Data</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <style>
+      body {
+        padding: 20px;
+      }
+      table {
+        font-size: 12px; /* Adjust the font size as needed */
+      }
+    </style>
+  </head>
+  <body>
+    <div id="table-container" class="table-responsive"></div>
+
+    <script>
+      // Replace with your GeoJSON URL
+      var geoServiceUrl =
+        "https://maps2.bristol.gov.uk/server2/rest/services/ext/ll_leisure_and_culture/MapServer/22/query?outFields=*&where=1%3D1&f=geojson";
+
+      // Fetch data from the GeoService
+      fetch(geoServiceUrl)
+        .then((response) => response.json())
+        .then((data) => {
+          var tableContainer = document.getElementById("table-container");
+
+          // Create the table
+          var table = '<table class="table table-striped"><thead><tr>';
+
+          // Get the headers from the first feature's properties
+          var headers = Object.keys(data.features[0].properties);
+          headers.forEach((header) => {
+            var displayHeader =
+              header === "SERVICES_PROVIDED" ? "SERVICES" : header;
+            table += "<th>" + displayHeader + "</th>";
+          });
+
+          table += "</tr></thead><tbody>";
+
+          // Add the data rows
+          data.features.forEach((feature) => {
+            table += "<tr>";
+            headers.forEach((header) => {
+              table += "<td>" + feature.properties[header] + "</td>";
+            });
+            table += "</tr>";
+          });
+
+          table += "</tbody></table>";
+
+          // Insert the table into the container
+          tableContainer.innerHTML = table;
+        })
+        .catch((error) => console.error("Error loading data:", error));
+    </script>
+  </body>
+</html>

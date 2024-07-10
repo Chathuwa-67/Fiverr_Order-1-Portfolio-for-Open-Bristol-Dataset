@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cycle shops and repairs map</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <style>
+      #map {
+        width: 100%;
+        height: 100vh;
+      }
+      .leaflet-popup-content-wrapper {
+        width: auto !important;
+      }
+      .leaflet-popup-content {
+        font-size: 10px; /* Adjust the font size as needed */
+        margin: 0;
+        padding: 0;
+      }
+      .leaflet-popup-content table {
+        font-size: 10px; /* Adjust the font size for table content */
+      }
+    </style>
+  </head>
+  <body>
+    <div id="map"></div>
+    <script>
+      var map = L.map("map").setView([51.4545, -2.5879], 13); // Centered on Bristol
+
+      L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+        maxZoom: 19,
+      }).addTo(map);
+
+      // Define a custom cycle icon
+      var cycleIcon = L.icon({
+        iconUrl: "../img/icon.png", // URL to your cycle icon image
+        iconSize: [48, 48], // increased size of the icon
+        iconAnchor: [24, 48], // adjusted icon anchor
+        popupAnchor: [0, -48], // adjusted popup anchor
+      });
+
+      // Replace with your GeoJSON URL
+      var geoServiceUrl =
+        "https://maps2.bristol.gov.uk/server2/rest/services/ext/ll_leisure_and_culture/MapServer/22/query?outFields=*&where=1%3D1&f=geojson";
+
+      // Fetch data from the GeoService
+      fetch(geoServiceUrl)
+        .then((response) => response.json())
+        .then((data) => {
+          // Assuming the data is in GeoJSON format
+          L.geoJSON(data, {
+            pointToLayer: function (feature, latlng) {
+              return L.marker(latlng, { icon: cycleIcon });
+            },
+            onEachFeature: function (feature, layer) {
+              // Bind a pop-up to each feature with a Bootstrap table
+              var popupContent =
+                '<div class="table-responsive"><table class="table table-striped">';
+              for (var key in feature.properties) {
+                // Change 'SERVICES_PROVIDED' to 'SERVICES'
+                var displayKey = key === "SERVICES_PROVIDED" ? "SERVICES" : key;
+                popupContent +=
+                  "<tr><th>" +
+                  displayKey +
+                  "</th><td>" +
+                  feature.properties[key] +
+                  "</td></tr>";
+              }
+              popupContent += "</table></div>";
+              layer.bindPopup(popupContent);
+            },
+          }).addTo(map);
+        })
+        .catch((error) => console.error("Error loading data:", error));
+    </script>
+  </body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Cycle shops Portfolio</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="../css/style.css" />
+  </head>
+  <body>
+    <!-- partial:index.partial.html -->
+    <main>
+      <aside>
+        <img src="../img/logo.png" alt="Bristol Bike Shops" class="nav-image" />
+        <ul class="nav flex-column">
+          <li class="nav-item">
+            <a class="nav-link" href="../index.html">
+              <i class="fa-solid fa-bicycle"></i>
+              <span>Home</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="table.html">
+              <i class="fa fa-solid fa-table"></i>
+              <span>Table</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="mapMain.html">
+              <i class="fa-solid fa-map-marker"></i>
+              <span>Map</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="overview.html">
+              <i class="fa-solid fa-file-text"></i>
+              <span>Overview</span>
+            </a>
+          </li>
+        </ul>
+      </aside>
+
+      <!-- Welcome Section -->
+      <div class="swiper mySwiper">
+        <div class="SlideContainer swiper-wrapper">
+          <div class="swiper-slide">
+            <h1 class="heading">Cycle shops and repairs</h1>
+            <div class="container mt-0">
+              <div class="embed-responsive embed-responsive-16by9">
+                <iframe
+                  class="embed-responsive-item"
+                  src="BristolOpenData.html"
+                  width="100%"
+                  height="auto"
+                  frameborder="0"
+                ></iframe>
+              </div>
+            </div>
+            <footer class="mt-5">
+              <div class="container">
+                <p>© 2024 Bristol Open Data Project</p>
+              </div>
+            </footer>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- partial -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  </body>
+</html>
