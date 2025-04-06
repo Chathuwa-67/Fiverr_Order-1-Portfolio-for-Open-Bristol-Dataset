@@ -11,7 +11,7 @@ This project is a portfolio piece showcasing an embedded data table with an inte
   - User-friendly filters and search functionality
 
 ## 📌 Live Demo
-[Click here to view the live project](#) 
+[Click here to view the live project](https://chathuwa-67.github.io/Fiverr_Order-1-Portfolio-for-Open-Bristol-Dataset/) 
 
 ## 🛠️ Installation & Setup
 
