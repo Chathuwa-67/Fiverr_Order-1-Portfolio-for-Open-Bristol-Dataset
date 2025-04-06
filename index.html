@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Cycle Shops Portfolio</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+   
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,500;1,600;1,700;1,800;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Bonbon&display=swap");
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+}
+
+main {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  font-family: Poppins;
+}
+
+/* Active link styles */
+.nav-link.active {
+  color: #007bff; /* Blue color for active link */
+}
+
+/* Hover styles for non-active links */
+.nav-link:not(.active):hover {
+  color: #007bff; /* Blue color on hover */
+  text-decoration: none; /* Remove underline on hover */
+}
+
+/* Default color for non-active links */
+.nav-link:not(.active) {
+  color: #ffffff; /* White color for non-active links */
+}
+
+aside {
+  width: 180px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  font-size: 1.1rem;
+  background-color: #202224;
+  backdrop-filter: blur(20px);
+}
+
+.Links {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+}
+
+aside li {
+  list-style-type: none;
+  display: flex;
+  padding: 20px;
+  gap: 10px;
+  color: white;
+  align-items: center;
+  cursor: pointer;
+  position: relative;
+  transition-duration: 0.2s;
+}
+
+aside li:hover {
+  color: rgba(115, 163, 255, 255);
+}
+
+aside li::after {
+  position: absolute;
+  width: 100%;
+  left: 0px;
+  height: 1px;
+  background: linear-gradient(to left, transparent, #ffffff24, transparent);
+  content: "";
+  bottom: 0px;
+}
+
+aside li i {
+  font-size: 1.3rem;
+}
+
+.activeLink {
+  color: rgba(115, 163, 255, 255);
+}
+
+.section {
+  display: none; /* Hide sections by default */
+  height: 100vh; /* Ensure sections take the full viewport height */
+  width: 100%; /* Account for the aside width */
+  overflow: auto; /* Allow scrolling within sections */
+  position: relative; /* Ensure footer positioning */
+}
+
+.section.active {
+  display: block; /* Show active section */
+}
+
+.mySwiper {
+  flex: 1;
+  height: 100%;
+  overflow: hidden;
+  background-color: #343a40;
+}
+
+.swiper-slide {
+  width: 100%;
+  height: 100%;
+  background-color: #343a40;
+}
+
+.home-slide {
+  color: rgb(45, 40, 40);
+  display: flex;
+  background-color: #343a40;
+}
+
+.HomeContent {
+  margin: auto 0px;
+  flex: 1;
+  height: auto;
+  padding: 100px;
+  user-select: none;
+}
+
+.bottom-left-corner {
+  left: -50px;
+  bottom: -50px;
+  rotate: -90deg;
+}
+
+.top-right-corner {
+  right: -50px;
+  top: -50px;
+  rotate: 90deg;
+}
+
+.hr1 {
+  width: 150px;
+  height: 10px;
+  border: none;
+  background: rgba(115, 163, 255, 255);
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+}
+
+.hr2 {
+  width: 10px;
+  height: 120px;
+  border-bottom-left-radius: 3px;
+  background: rgba(115, 163, 255, 255);
+  border: none;
+  border-bottom-right-radius: 3px;
+}
+
+.HomeContent h1 {
+  font-size: 3em;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.HomeContent h2 {
+  font-size: 2.3em;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.HomeContent h1 .stylized-name {
+  font-weight: 700;
+  color: rgba(115, 163, 255, 255);
+}
+h2 {
+  color: #007bff;
+}
+.proffesions {
+  color: #85f69f;
+}
+
+.HomeContent .heroline {
+  font-size: 1.5rem;
+  font-weight: 300;
+  padding-right: 50px;
+}
+
+.about-us {
+  width: 100%;
+  height: 100%;
+  padding: 100px;
+  color: white;
+  overflow: auto;
+}
+
+.heading {
+  padding: 20px 10px;
+  font-size: 2.5rem;
+  color: rgba(115, 163, 255, 255);
+}
+
+.about-us h3 {
+  padding: 10px;
+}
+
+.aboutme-deatils {
+  padding: 20px;
+  font-weight: 300;
+}
+
+footer {
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+  text-align: center;
+  color: white;
+  width: 100%;
+  font-weight: 200;
+  font-size: 0.8rem;
+}
+
+footer li {
+  padding: 10px;
+}
+
+.table-section {
+  overflow: hidden;
+}
+
+.table-responsive {
+  overflow-x: auto;
+}
+
+.description-column {
+  width: 30%;
+}
+
+.website-column {
+  width: 10%;
+}
+
+.container {
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.table {
+  width: 100%;
+  table-layout: fixed;
+  word-wrap: break-word;
+}
+
+.embed-responsive {
+  height: 80vh;
+  width: 50vw;
+  padding-bottom: 40%; /* 16:9 aspect ratio */
+  position: relative;
+}
+#table {
+  padding: 20px;
+}
+
+#table table {
+  font-size: 12px; /* Adjust the font size as needed */
+}
+#map {
+  width: 100%;
+  height: 100vh;
+}
+
+#map .leaflet-popup-content-wrapper {
+  width: auto !important;
+}
+
+#map .leaflet-popup-content {
+  font-size: 10px; /* Adjust the font size as needed */
+  margin: 0;
+  padding: 0;
+}
+
+#map .leaflet-popup-content table {
+  font-size: 10px; /* Adjust the font size for table content */
+}
+#map iframe {
+  width: 100vw;
+  height: 100vh; /* Set iframe to occupy full viewport height */
+    overflow: hidden;
+}
+
+    </style>
+     
+  </head>
+  <body>
+    <main>
+      <aside>
+       <svg   fill="#000000" height="150px" width="150px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-97.28 -97.28 706.56 706.56" xml:space="preserve"><g id="SVGRepo_bgCarrier" stroke-width="0"><rect x="-97.28" y="-97.28" width="706.56" height="706.56" rx="353.28" fill="#7ed0ec" strokewidth="0"></rect></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g> <g> <path d="M407.966,209.809c-4.257,0-8.454,0.263-12.578,0.762l-10.465-36.07l-22.406-80.377h-50.086v33.391h24.73l9.716,34.856 H204.273l-4.567-12.595h25.847v-33.391h-83.802v33.391h22.436l9.833,27.116l-27.568,41.966 c-12.961-5.811-27.319-9.049-42.419-9.049C46.67,209.809,0,256.479,0,313.842c0,57.365,46.67,104.034,104.034,104.034 c51.681,0,94.673-37.884,102.686-87.338h3.355c6.143,12.246,18.812,20.675,33.418,20.675c20.606,0,37.368-16.765,37.368-37.37 c0-5.34-1.134-10.418-3.161-15.017l83.215-87.236l2.407,8.3c-35.085,16.739-59.389,52.56-59.389,93.954 c0,57.365,46.669,104.034,104.033,104.034c57.364,0,104.034-46.67,104.034-104.035C512,256.479,465.33,209.809,407.966,209.809z M155.646,265.682c8.145,8.723,14.106,19.499,17.017,31.465h-37.685L155.646,265.682z M104.034,384.485 c-38.952,0-70.643-31.691-70.643-70.644c0-38.952,31.691-70.642,70.643-70.642c8.321,0,16.307,1.457,23.727,4.112l-54.67,83.226 h99.573C165.14,361.456,137.233,384.485,104.034,384.485z M210.076,297.146h-3.356c-3.814-23.541-15.551-44.457-32.383-59.916 l13.893-21.15l26.719,73.681C213.048,292.011,211.408,294.488,210.076,297.146z M243.493,317.821 c-2.194,0-3.978-1.785-3.978-3.979c0-2.193,1.785-3.977,3.978-3.977s3.977,1.784,3.977,3.977 C247.47,316.035,245.685,317.821,243.493,317.821z M251.943,277.448c-2.034-0.472-4.126-0.782-6.27-0.907l-29.292-80.779h113.483 L251.943,277.448z M407.966,384.485c-38.952,0-70.642-31.691-70.642-70.643c0-26.159,14.304-49.026,35.49-61.235l19.117,65.888 l32.07-9.304l-19.123-65.911c1.025-0.044,2.052-0.078,3.089-0.078c38.952,0,70.643,31.689,70.643,70.642 C478.609,352.795,446.918,384.485,407.966,384.485z"></path> </g> </g> </g></svg>
+        <ul class="nav flex-column">
+          <li class="nav-item">
+            <a class="nav-link active" href="#" data-target="home">
+              <i class="fa-solid fa-bicycle"></i>
+              <span>Home</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#" data-target="table">
+              <i class="fa fa-solid fa-table"></i>
+              <span>Table</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#" data-target="map">
+              <i class="fa-solid fa-map-marker"></i>
+              <span>Map</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#" data-target="overview">
+              <i class="fa-solid fa-file-text"></i>
+              <span>Overview</span>
+            </a>
+          </li>
+        </ul>
+      </aside>
+
+      <div class="content">
+        <!-- Home Section -->
+        <section id="home" class="section active">
+            <div class="swiper mySwiper">
+                <div class="SlideContainer swiper-wrapper">
+                  <div class="swiper-slide home-slide">
+                    <header class="container mt-5">
+                      <div class="jumbotron">
+                        <h1 class="display-4 text-center">
+                          Welcome to Bristol Bike Shops
+                        </h1>
+                        <p class="lead">
+                          This website provides comprehensive information on where you
+                          can find bike shops in Bristol. Whether you are looking to buy
+                          a new bike, hire one, get repairs done, or explore other
+                          bike-related services, this directory will help you find the
+                          best shops in the region.
+                        </p>
+                        <hr class="my-4" />
+                        <p>Key Features:</p>
+                        <ul>
+                          <li>
+                            Interactive Map: Easily locate bike shops across Bristol
+                            with our embedded map.
+                          </li>
+                          <li>
+                            Detailed Information: Find shop names, addresses,
+                            descriptions, websites, phone numbers, services provided,
+                            and regions in our detailed table.
+                          </li>
+                          <li>
+                            Comprehensive Services: Discover shops that offer new bikes,
+                            used bikes, bike repairs, bike hire, and bike services.
+                          </li>
+                        </ul>
+                        <h2>Explore the Directory</h2>
+                        <p>
+                          Use the navigation menu to explore the map and detailed
+                          information about each bike shop in Bristol.
+                        </p>
+                      </div>
+                    </header>
+                    <footer>
+                      <li>© 2024 Bristol Open Data Project</li>
+                    </footer>
+                  </div>
+                </div>
+              </div>
+        </section>
+
+        <!-- Table Section -->
+        <section id="table" class="section">
+          <h2>Cycle Shops Details</h2>
+          <!-- Add your table content here -->
+          <div id="table-container" class="table-responsive"></div>
+
+    <script>
+      // Replace with your GeoJSON URL
+      var geoServiceUrl =
+        "https://maps2.bristol.gov.uk/server2/rest/services/ext/ll_leisure_and_culture/MapServer/22/query?outFields=*&where=1%3D1&f=geojson";
+
+      // Fetch data from the GeoService
+      fetch(geoServiceUrl)
+        .then((response) => response.json())
+        .then((data) => {
+          var tableContainer = document.getElementById("table-container");
+
+          // Create the table
+          var table = '<table class="table table-striped"><thead><tr>';
+
+          // Get the headers from the first feature's properties
+          var headers = Object.keys(data.features[0].properties);
+          headers.forEach((header) => {
+            var displayHeader =
+              header === "SERVICES_PROVIDED" ? "SERVICES" : header;
+            table += "<th>" + displayHeader + "</th>";
+          });
+
+          table += "</tr></thead><tbody>";
+
+          // Add the data rows
+          data.features.forEach((feature) => {
+            table += "<tr>";
+            headers.forEach((header) => {
+              table += "<td>" + feature.properties[header] + "</td>";
+            });
+            table += "</tr>";
+          });
+
+          table += "</tbody></table>";
+
+          // Insert the table into the container
+          tableContainer.innerHTML = table;
+        })
+        .catch((error) => console.error("Error loading data:", error));
+    </script>
+    
+        </section>
+
+        <!-- Map Section -->
+        
+        <section id="map" class="section">
+          <h2>Shops Details in Map</h2>
+          <div class="swiper mySwiper">
+            <div class="SlideContainer swiper-wrapper">
+              <div class="swiper-slide">
+                <div class="container mt-0">
+                  <iframe
+                    src="https://openbristoldata.github.io/cycle-repair-bristol/"
+                    width="100%"
+                    height="100%"
+                    frameborder="0"
+                    
+                  ></iframe>
+                </div>
+               
+              </div>
+            </div>
+          </div>
+        </section>
+        
+
+        <!-- Overview Section -->
+        <section id="overview" class="section">
+           
+          <!-- Add your overview content here -->
+          <div class="swiper mySwiper">
+            <div class="SlideContainer swiper-wrapper">
+              <!-- Conclusion Section -->
+              <div class="swiper-slide">
+                <div>
+                  <h1 class="heading">Overview</h1>
+    
+                  <header class="container mt-">
+                    <div class="jumbotron">
+                      <h1 class="display-4">Bristol Bike Shops</h1>
+                      <p class="lead">
+                        The Bristol Bike Shops Directory is your resource for
+                        finding bike-related services in Bristol. Our directory
+                        features a wide range of shops, each offering unique
+                        services to meet all your cycling needs.
+                      </p>
+                      <p>
+                        This data is collected from the
+                        <a href="https://opendata.bristol.gov.uk" target="_blank"
+                          >Bristol Open Data website</a
+                        >.
+                      </p>
+                    </div>
+                  </header>
+    
+                  <section class="container text-white ml-5">
+                    <h2>How to Use This Directory</h2>
+                    <ol>
+                      <li>
+                        Explore the Map: Use our interactive map to see the
+                        locations of all bike shops in Bristol. Click on the markers
+                        to view more details about each shop.
+                      </li>
+                      <li>
+                        Browse the Table: Check the table below the map for a
+                        detailed list of shops. You can search in the table based on
+                        different criteria to find exactly what you need.
+                      </li>
+                      <li>
+                        Visit and Contact: Click on the website links or call the
+                        phone numbers to get in touch with the shops directly for
+                        more information or to avail of their services.
+                      </li>
+                    </ol>
+                  </section>
+                  <footer>
+                    <li>© 2024 Bristol Open Data Project</li>
+                  </footer>
+                </div>
+              </div>
+            </div>
+        </section>
+      </div>
+    </main>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const navLinks = document.querySelectorAll(".nav-link");
+        const sections = document.querySelectorAll(".section");
+
+        navLinks.forEach((link) => {
+          link.addEventListener("click", function (event) {
+            event.preventDefault();
+
+            // Remove 'active' class from all sections
+            sections.forEach((section) => {
+              section.classList.remove("active");
+            });
+
+            // Add 'active' class to the target section
+            const target = link.getAttribute("data-target");
+            document.getElementById(target).classList.add("active");
+
+            // Remove 'active' class from all nav links
+            navLinks.forEach((link) => {
+              link.classList.remove("active");
+            });
+
+            // Add 'active' class to the clicked nav link
+            link.classList.add("active");
+          });
+        });
+      });
+    </script>
+      <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
+  </body>
+</html>
